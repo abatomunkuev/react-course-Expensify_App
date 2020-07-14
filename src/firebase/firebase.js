@@ -1,4 +1,4 @@
-import * as firebase from 'firebase'; // * as - it takes all of the named exports from firebase and put them into the variable firebase
+import * as firebase from 'firebase/app'; // * as - it takes all of the named exports from firebase and put them into the variable firebase
 import { set } from 'numeral';
 
 const firebaseConfig = {
