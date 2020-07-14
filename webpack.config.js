@@ -5,15 +5,14 @@ const MiniExtractPlugin = require('mini-css-extract-plugin');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-if(process.env.NODE_ENV === 'test') {
-    require('dotenv').config({ path: '.env.test'})
-} else if (process.env.NODE_ENV === 'development') {
-    require('dotenv').config({ path: '.env.development'})
-}
+if (process.env.NODE_ENV === 'test') {
+    require('dotenv').config({ path: '.env.test' });
+  } else if (process.env.NODE_ENV === 'development') {
+    require('dotenv').config({ path: '.env.development' });
+  }
 
 module.exports = (env) => {
     const isProduction = env === 'production';
-    console.log(env);
     return {
         entry: "./src/app.js",
         output: {
@@ -41,11 +40,10 @@ module.exports = (env) => {
             new webpack.DefinePlugin({
                 'process.env.FIREBASE_API_KEY': JSON.stringify(process.env.FIREBASE_KEY),
                 'process.env.FIREBASE_AUTH_DOMAIN': JSON.stringify(process.env.FIREBASE_AUTH_DOMAIN),
-                'process.env.DATABASE_URL': JSON.stringify(process.env.DATABASE_URL),
-                'process.env.PROJECT_ID': JSON.stringify(process.env.PROJECT_ID),
-                'process.env.STORAGE_BUCKET': JSON.stringify(process.env.STORAGE_BUCKET),
-                'process.env.MESSAGING_SENDER_ID': JSON.stringify(process.env.MESSAGING_SENDER_ID),
-                'process.env.APP_ID': JSON.stringify(process.env.APP_ID)
+                'process.env.DATABASE_URL': JSON.stringify(process.env.FIREBASE_DATABASE_URL),
+                'process.env.PROJECT_ID': JSON.stringify(process.env.FIREBASE_PROJECT_ID),
+                'process.env.STORAGE_BUCKET': JSON.stringify(process.env.FIREBASE_STORAGE_BUCKET),
+                'process.env.MESSAGING_SENDER_ID': JSON.stringify(process.env.FIREBASE_MESSAGING_SENDER_ID)
             })
         ],
         devtool: isProduction ? 'source-map' : 'eval-cheap-module-source-map',
