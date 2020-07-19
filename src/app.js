@@ -6,6 +6,7 @@ import configureStore from './store/configureStore';
 import { startSetExpenses } from './actions/expenses';
 import { login,logout } from './actions/auth';
 import getVisibleExpenses from './selectors/expenses';
+import LoadingPage from './components/LoadingPage';
 import 'react-dates/initialize';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
@@ -29,7 +30,9 @@ const renderApp = () => {
 };
 
 
-ReactDOM.render(<p>Loading...</p>, document.querySelector('#app'));
+ReactDOM.render(<LoadingPage/>, document.querySelector('#app'));
+
+
 
 firebase.auth().onAuthStateChanged((user) => {
     if(user) {
